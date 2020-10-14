@@ -1,0 +1,31 @@
+<div>
+  <%= form_with(url: search_shops_path, local: true, method: :get) do |form| %>
+    <%= form.text_field :keyword, placeholder: "投稿を検索する" %>
+    <%= form.submit "検索" %>
+  <% end %>
+  <table class="table table-striped table-hover">
+    <tr>
+      <td>カテゴリ</td><td>店名</td><td>住所</td><td>機能</td>
+    </tr>
+    <% @shops.each do |shop| %>
+      <tr>
+        <td><%= shop.category.name %>  </td>
+        <td><%= shop.name %></td>
+        <td><%= shop.address %></td>
+        <td>
+          <li class="btn btn-info">
+            <%= link_to '詳細', shop_path(shop.id), method: :get %>
+          </li>
+          <% if user_signed_in? && current_user.id == shop.user_id %>
+            <li class="btn btn-info">
+              <%= link_to '編集', edit_shop_path(shop.id), method: :get %>
+            </li>
+            <li class="btn btn-danger">
+              <%= link_to '削除', shop_path(shop.id), method: :delete %>
+            </li>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'>
+    <title>Best Dish</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header>
+    <div>
+      <a href="/"><h1 class="title" >Best Dish</h1></a>
+      
+      <% if user_signed_in? %>
+        <div>
+          <span>
+            ユーザー名<h2><%= current_user.nickname %></h2>
+            <ul>
+              <li class="btn btn-success"><%= link_to "マイページ", "/users/#{current_user.id}" %></li>
+              <li class="btn btn-dark"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              <li class="btn btn-primary"><%= link_to "投稿する", new_shop_path %></li>
+            </ul>
+          </span>
+        </div>
+      <% else %>
+        <div>
+          <li class="btn btn-primary"><%= link_to "ログイン", new_user_session_path %></li>
+          <li class="btn btn-primary"><%= link_to "新規登録", new_user_registration_path %></li>
+        </div>
+      <% end %>
+    </div>
+
+  </header>
+    <%= yield %>
+  </body>
+</html>
