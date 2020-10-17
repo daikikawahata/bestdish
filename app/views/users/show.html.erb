@@ -13,12 +13,14 @@
           <li class="btn btn-info">
             <%= link_to '詳細', shop_path(shop.id), method: :get %>
           </li>
+          <% if user_signed_in? && current_user.id == shop.user_id %>
           <li class="btn btn-info">
             <%= link_to '編集', edit_shop_path(shop.id), method: :get %>
           </li>
           <li class="btn btn-danger">
             <%= link_to '削除', shop_path(shop.id), method: :delete %>
           </li>
+          <% end %>
         </td>
       </tr>
     <% end %>

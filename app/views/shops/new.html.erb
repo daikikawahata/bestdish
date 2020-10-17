@@ -5,6 +5,9 @@
     <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"category-select"}) %>
     <%= form.file_field :image, placeholder: "Image Url" %>
     <%= form.text_field :address, placeholder: "住所" %>
+    <%= form.text_field :dishname, placeholder: "料理名" %>
+    <%= form.text_field :price, placeholder: "値段" %>
+    <%= form.text_field :impression, placeholder: "感想" %>
     <%= form.submit "投稿する" %>
   <% end %>
 </div>

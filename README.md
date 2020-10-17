@@ -22,3 +22,35 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# テーブル設計
+
+## users テーブル
+
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| nickname | string | null: false |
+| email    | string | null: false |
+| password | string | nill: false |
+
+### Association
+
+- has_many :shops
+
+## shops テーブル
+
+| Column      | Type    | Options     |
+| ----------- | ------- | ----------- |
+| name        | string  | null: false |
+| address     | string  | null: false |
+| category_id | integer | null: false |
+| user_id     | integer | null: false |
+| dish_name   | string  |             |
+| price       | integer |             |
+| impression  | string  |             |
+
+### Association
+
+- belongs_to_active_hash :category
+- belongs_to :user
+- has_one_attached :image

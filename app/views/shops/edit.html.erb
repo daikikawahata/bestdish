@@ -1,9 +1,12 @@
-<div>
+<div class="form-group col-md-6">
   <h3>編集する</h3>
   <%= form_with(model: @shop, local: true) do |form| %>
     <%= form.text_field :name, placeholder: "お店の名前" %>
     <%= form.collection_select(:category_id, Category.all, :id, :name, {}, {class:"category-select"}) %>
     <%= form.text_field :address, placeholder: "住所" %>
-    <%= form.submit "投稿する" %>
+    <%= form.text_field :dishname, placeholder: "料理名" %>
+    <%= form.text_field :price, placeholder: "値段" %>
+    <%= form.text_field :inpression, placeholder: "感想" %>
+    <%= form.submit "完了する" %>
   <% end %>
 </div>
